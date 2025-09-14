@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCN的BeamMP服务器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a1a',
+                        secondary: '#333333',
+                        accent: '#00a8ff',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .nav-active {
+                @apply border-b-2 border-accent text-accent;
+            }
+            .page-transition {
+                @apply transition-opacity duration-500 ease-in-out;
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <nav class="bg-primary border-b border-secondary sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-center md:justify-start space-x-8">
+                <button id="welcome-btn" class="nav-active py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300">
+                    <i class="fa fa-home mr-2"></i>欢迎
+                </button>
+                <button id="server-btn" class="py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300">
+                    <i class="fa fa-server mr-2"></i>服务器
+                </button>
+                <button id="chat-btn" class="py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300">
+                    <i class="fa fa-comments mr-2"></i>交流(必看)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="flex-grow container mx-auto px-4 py-12">
+        <!-- 欢迎页面 -->
+        <div id="welcome-page" class="page-transition">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-8 text-accent leading-tight">
+                    欢迎您来到BCN的BeamMP服务器网址
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl mt-6">
+                    如果您遇到问题，请联系
+                    <a href="mailto:2965814353@qq.com" class="text-gray-300 hover:text-white underline transition-colors">
+                        2965814353@qq.com
+                    </a>
+                </p>
+                <div class="mt-16 flex justify-center">
+                    <div class="w-32 h-32 rounded-full bg-gradient-to-br from-accent/20 to-transparent flex items-center justify-center">
+                        <i class="fa fa-car text-5xl text-accent/70"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 服务器页面 -->
+        <div id="server-page" class="page-transition hidden">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-8 text-accent">
+                    如何加入服务器？
+                </h2>
+                <div class="bg-secondary/50 rounded-lg p-6 md:p-8 border border-secondary">
+                    <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                        请您先下载BeamMP，B站上有很多相关教程。
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                        然后在直接连接内填写：
+                    </p>
+                    <div class="bg-primary rounded-md p-4 my-6 border-l-4 border-accent">
+                        <p class="text-white font-mono text-lg">IP: 103.236.92.21:55924</p>
+                        <p class="text-gray-400 mt-2">端口保持默认</p>
+                    </div>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        如遇到问题，请联系QQ: 
+                        <span class="text-white font-medium">2965814353</span>
+                    </p>
+                </div>
+                <div class="mt-12 flex justify-center">
+                    <div class="flex items-center space-x-4 bg-secondary/30 px-6 py-3 rounded-full">
+                        <i class="fa fa-info-circle text-accent text-xl"></i>
+                        <span class="text-gray-300">确保您的BeamMP客户端是最新版本</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 交流页面 -->
+        <div id="chat-page" class="page-transition hidden">
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-gradient-to-r from-accent/20 to-transparent rounded-lg p-8 border border-accent/30">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-accent/20 p-3 rounded-full mr-4">
+                            <i class="fa fa-exclamation-circle text-accent text-2xl"></i>
+                        </div>
+                        <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                            请一定加入QQ群 <span class="text-white font-bold text-xl">1022710640</span>，否则一律不提供服务，请配合，谢谢
+                        </p>
+                    </div>
+                    <div class="mt-8 flex justify-center">
+                        <a href="https://qm.qq.com/cgi-bin/qm/qr?k=YbDhlg1fX13Q_4d2y1x3a3xrxV2n3M&jump_from=webapi" target="_blank" class="bg-accent hover:bg-accent/80 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 flex items-center">
+                            <i class="fa fa-qq mr-2 text-xl"></i>
+                            加入QQ群
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary border-t border-secondary py-6">
+        <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>© 2023 BCN的BeamMP服务器 - 保留所有权利</p>
+        </div>
+    </footer>
+
+    <script>
+        // 获取导航按钮和页面元素
+        const welcomeBtn = document.getElementById('welcome-btn');
+        const serverBtn = document.getElementById('server-btn');
+        const chatBtn = document.getElementById('chat-btn');
+        
+        const welcomePage = document.getElementById('welcome-page');
+        const serverPage = document.getElementById('server-page');
+        const chatPage = document.getElementById('chat-page');
+        
+        // 导航按钮数组和页面数组，用于循环处理
+        const navButtons = [welcomeBtn, serverBtn, chatBtn];
+        const pages = [welcomePage, serverPage, chatPage];
+        
+        // 显示指定页面的函数
+        function showPage(pageIndex) {
+            // 隐藏所有页面
+            pages.forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // 移除所有导航按钮的活跃状态
+            navButtons.forEach(btn => {
+                btn.classList.remove('nav-active');
+            });
+            
+            // 显示选中的页面并激活对应的导航按钮
+            pages[pageIndex].classList.remove('hidden');
+            navButtons[pageIndex].classList.add('nav-active');
+        }
+        
+        // 为每个导航按钮添加点击事件
+        welcomeBtn.addEventListener('click', () => showPage(0));
+        serverBtn.addEventListener('click', () => showPage(1));
+        chatBtn.addEventListener('click', () => showPage(2));
+        
+        // 添加页面加载动画效果
+        window.addEventListener('load', () => {
+            document.body.classList.add('opacity-100');
+            document.body.classList.remove('opacity-0');
+        });
+    </script>
+</body>
+</html>
