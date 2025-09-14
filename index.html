@@ -1,77 +1,86 @@
-
- 
-<头>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BCN的BeamMP服务器</title>
+    <!-- 网站图标 -->
+    <link rel="icon" href="logo.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-    <链接 链接="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="样式表">
-    <脚本>
-        尾风.配置 = {
-            主题：{
-                扩展：{
-                    颜色：{
-                        主要：'#1a1a1a'
-                        次要的：'#33333'
-                         accent  :  '#00a8ff'  ,
-                    }
-                    字体家族：{
-                        字体：['Inter'，'system-ui'，'sans-serif']
-                    }
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a1a',
+                        secondary: '#333333',
+                        accent: '#00a8ff',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
                 }
             }
         }
-    <</脚本>
-    <样式 类型="text/tailwindcss"< >
-        @层 工具
-
-                内容可见性：自动；
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
             }
-            导航激活
+            .nav-active {
                 @apply border-b-2 border-accent text-accent;
             }
-            页面过渡 {
+            .page-transition {
                 @apply transition-opacity duration-500 ease-in-out;
             }
         }
-    </style></style>
-
+    </style>
+</head>
 <body class="bg-black text-white min-h-screen flex flex-col">
     <!-- 导航栏 -->
-    <nav class="bg-primary border-b border-secondary sticky top-0 z-50"><nav class="bg-primary border-b border-secondary sticky top-0 z-50">
+    <nav class="bg-primary border-b border-secondary sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-center md:justify-start space-x-8">
-                <button id="welcome-btn" class="nav-active py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300"><button id="welcome-btn" class="nav-active py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300">
-                    欢迎<i class="fa fa-home mr-2"></i>欢迎
-                </button></button>
-                <button id="server-btn" class="py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300">
-                    服务器<i class="fa fa-server mr-2"></i>服务器
-                </button></button>
-                <button id="chat-btn" class="py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300"><button id="chat-btn" class="py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300">
-                    交流(必看)<i class="fa fa-comments mr-2"></i>交流(必看)
-                </button></button>
-            </div></div>
-        </div></div>
-    </nav></nav>
+            <div class="flex items-center justify-between">
+                <!-- 左侧Logo -->
+                <div class="flex items-center">
+                    <img src="logo.ico" alt="Logo" class="h-10 w-10 mr-4" />
+                </div>
+                <!-- 导航按钮 -->
+                <div class="flex justify-center md:justify-start space-x-8">
+                    <button id="welcome-btn" class="nav-active py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300">
+                        <i class="fa fa-home mr-2"></i>欢迎
+                    </button>
+                    <button id="server-btn" class="py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300">
+                        <i class="fa fa-server mr-2"></i>服务器
+                    </button>
+                    <button id="chat-btn" class="py-2 px-1 text-lg font-medium hover:text-accent transition-colors duration-300">
+                        <i class="fa fa-comments mr-2"></i>交流(必看)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- 主内容区 -->
-    <main class="flex-grow container mx-auto px-4 py-12"><main class="flex-grow container mx-auto px-4 py-12">
+    <main class="flex-grow container mx-auto px-4 py-12">
         <!-- 欢迎页面 -->
         <div id="welcome-page" class="page-transition">
             <div class="max-w-3xl mx-auto text-center">
                 <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-8 text-accent leading-tight">
                     欢迎您来到BCN的BeamMP服务器网址
-                </h1></h1>
+                </h1>
                 <p class="text-gray-400 text-lg md:text-xl mt-6">
                     如果您遇到问题，请联系
                     <a href="mailto:2965814353@qq.com" class="text-gray-300 hover:text-white underline transition-colors">
                         2965814353@qq.com
-                    </a></a>
-                </p></p>
+                    </a>
+                </p>
                 <div class="mt-16 flex justify-center">
                     <div class="w-32 h-32 rounded-full bg-gradient-to-br from-accent/20 to-transparent flex items-center justify-center">
                         <i class="fa fa-car text-5xl text-accent/70"></i>
-                    </div>/div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -133,7 +142,7 @@
     <!-- 页脚 -->
     <footer class="bg-primary border-t border-secondary py-6">
         <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
-            <p> 请不要对我的邮箱发送无用文件 </p>
+            <p>© 所有解释权归于 - B站BritishCatN</p>
         </div>
     </footer>
 
